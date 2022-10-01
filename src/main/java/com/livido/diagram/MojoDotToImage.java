@@ -55,6 +55,11 @@ public class MojoDotToImage extends AbstractMojo {
             }
         }
         File input = new File(parsingDirectory);
+        if (!input.exists()) {
+            if (!input.mkdirs()) {
+                LOGGER.error("cannot create directory " + parsingDirectory);
+            }
+        }
         imageriter.render(input,resultDirectory);
     }
 
